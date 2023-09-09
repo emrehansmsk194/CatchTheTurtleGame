@@ -14,6 +14,7 @@ turtle_instance2 = turtle.Turtle()
 
 #turtle codes
 turtle_instance2.shape("turtle")
+turtle_instance2.shapesize(2,2)
 turtle_instance2.color("green")
 turtle_instance2.penup()
 
@@ -45,15 +46,16 @@ def turtle_movement():
 
 
 
-def time_counter():
+def time_counter(time):
     global game_over,time_variable
-    for i in range(time_variable,0, -1):
+    if time > 0:
         timer_Text.clear()
-        timer_Text.write(f"Time: {i}",align="center",font=("Arial",24,"normal"))
-        time.sleep(0.5)
-    timer_Text.clear()
-    timer_Text.write("Game Over!",align="center",font=("Arial",24,"normal"))
-    game_over = True
+        timer_Text.write(f"Time: {time}",align="center",font=("Arial",24,"normal"))
+        drawing_board.ontimer(lambda:time_counter(time-1),1000)
+    else:
+        timer_Text.clear()
+        timer_Text.write("Game Over!",align="center",font=("Arial",24,"normal"))
+        game_over = True
 
 def update_counter(x,y):
     global count
@@ -65,7 +67,7 @@ def update_counter(x,y):
 
 turtle_instance2.onclick(update_counter)
 turtle_movement()
-time_counter()
+time_counter(10)
 
 
 
