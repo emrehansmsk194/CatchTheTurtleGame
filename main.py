@@ -20,7 +20,6 @@ turtle_instance2.penup()
 
 
 game_over = False
-time_variable = 20
 count = 0
 starting_time = time.time()
 #score_Text codes
@@ -47,7 +46,7 @@ def turtle_movement():
 
 
 def time_counter(time):
-    global game_over,time_variable
+    global game_over
     if time > 0:
         timer_Text.clear()
         timer_Text.write(f"Time: {time}",align="center",font=("Arial",24,"normal"))
